@@ -1,4 +1,4 @@
-Welcome to bearing's documentation!
+Bearing / Azimuth documentation!
 ======================================
 
 .. toctree::

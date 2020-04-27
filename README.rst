@@ -1,23 +1,16 @@
-=======
-bearing
-=======
+===========================
+Bearing / Azimuth Converter
+===========================
 
-
-.. image:: https://img.shields.io/pypi/v/bearing.svg
-        :target: https://pypi.python.org/pypi/bearing
-
-.. image:: https://img.shields.io/travis/shakiestnerd/bearing.svg
-        :target: https://travis-ci.com/shakiestnerd/bearing
 
 .. image:: https://readthedocs.org/projects/bearing/badge/?version=latest
         :target: https://bearing.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-
-
-
-Convert between bearings and azimuth
-
+Simple application to convert between bearings and azimuth.  This application
+came about when I found my simple CAD program did not accept bearings as input.
+So, the best choice was to build a little converter so that values could be copied
+to the clipboard and pasted into the CAD program.
 
 * Free software: MIT license
 * Documentation: https://bearing.readthedocs.io.
@@ -26,7 +19,11 @@ Convert between bearings and azimuth
 Features
 --------
 
-* TODO
+* Enter a bearing in the form N 45° 30' 00" E and have it converted to an azimuth (angle from north).
+* Enter the azimuth angle and have the bearing automatically calculated.
+* Copy the results to the clipboard
+* Draw a sample angle on screen.
+* User interface created with PySimpleGui
 
 Credits
 -------

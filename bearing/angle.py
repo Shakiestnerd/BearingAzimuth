@@ -52,7 +52,7 @@ class Bearing:
             self._azimuth = 180 + angle
 
     def calc_bearing(self, az: float):
-        if -90.0 <= az <= 90.0:
+        if az <= 90.0 or az >= 270.0:
             self._north = "N"
         else:
             self._north = "S"
