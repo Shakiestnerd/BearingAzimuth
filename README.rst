@@ -4,7 +4,7 @@ Bearing / Azimuth Converter
 
 
 .. image:: https://readthedocs.org/projects/bearing/badge/?version=latest
-        :target: https://bearing.readthedocs.io/en/latest/?badge=latest
+        :target: https://bearingazimuth.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 Simple application to convert between bearings and azimuth.  This application
@@ -27,6 +27,10 @@ Features
 
 Credits
 -------
+
+Used the Anaconda distribution for development.
+
+PySimpleGui is the name of my virtual environment.
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 

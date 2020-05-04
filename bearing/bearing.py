@@ -3,6 +3,7 @@ import PySimpleGUI as sg
 from angle import Bearing
 import pyperclip
 import math
+import webbrowser
 
 DEGREE = u'\N{DEGREE SIGN}'
 SIZE_X = 200
@@ -13,7 +14,7 @@ NUMBER_MARKER_FREQUENCY = 25
 class UI:
     def __init__(self):
         """
-        Run the user interface
+        Run the user interface using PySimpleGUI
         """
 
         # Theme must be defined before layout
@@ -41,6 +42,7 @@ class UI:
                 sg.Input('0.0', size=(15, 2), key='azimuth', enable_events=True, )
             ],
             [sg.Button('Copy Bearing', key="copy_bear"), sg.Button('Copy Azimuth', key="copy_az"),
+             sg.Button('Docs', key="docs"),
              sg.Button('Exit')], [self.canvas]
         ]
 
@@ -73,6 +75,8 @@ class UI:
             elif event == "copy_az":
                 value = str(self.direction.get_azimuth())
                 pyperclip.copy(value)
+            elif event == "docs":
+                webbrowser.open("https://bearingazimuth.readthedocs.io/en/latest/")
             self.canvas.erase()
             self.draw_axis()
             self.draw_vector()
@@ -80,6 +84,9 @@ class UI:
         window.close()
 
     def draw_axis(self):
+        """
+        Draws the X and Y axis on the canvas.
+        """
         self.canvas.draw_line((-90, 0), (90, 0), color='blue')  # axis lines
         self.canvas.draw_line((0, -90), (0, 90), color='blue')
         self.canvas.draw_text("E", location=(95, 0), color="blue")
@@ -88,6 +95,9 @@ class UI:
         self.canvas.draw_text("S", color="blue", location=(0, -95))
 
     def draw_vector(self):
+        """
+        Draws the angle on the canvas
+        """
         angle = self.direction.get_azimuth()
         radians = math.radians(angle)
         x = y = 0

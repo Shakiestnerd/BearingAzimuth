@@ -21,6 +21,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
+#import bearing
 import bearing
 
 # -- General configuration ---------------------------------------------
@@ -31,7 +32,8 @@ import bearing
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', "sphinx_rtd_theme"]
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -83,7 +85,8 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+# html_theme = 'alabaster'
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.  For a list of options available for each theme, see the
@@ -128,7 +131,7 @@ latex_elements = {
 # [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'bearing.tex',
-     'bearing Documentation',
+     'Bearing / Azimuth Documentation',
      'Keith Sanders', 'manual'),
 ]
 
@@ -139,7 +142,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'bearing',
-     'bearing Documentation',
+     'Bearing / Azimuth Documentation',
      [author], 1)
 ]
 
@@ -151,7 +154,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'bearing',
-     'bearing Documentation',
+     'Bearing / Azimuth Documentation',
      author,
      'bearing',
      'One line description of project.',
