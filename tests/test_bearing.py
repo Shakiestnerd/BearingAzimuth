@@ -8,7 +8,6 @@ import pytest
 from bearing import bearing
 
 
-
 @pytest.fixture
 def response():
     """Sample pytest fixture.

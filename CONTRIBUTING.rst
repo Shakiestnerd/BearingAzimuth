@@ -4,6 +4,21 @@
 Contributing
 ============
 
+What follows is the boilerplate contributing guidelines that were included with
+Audrey's python cookie cutter package.  I like them and it is goal I aspire to 
+be able to support.  So, for that reason, I am leaving the information in this file.
+
+This is a small project that allows me to get comfortable with developing and Deploying
+a project along with testing and documentation that should be part of a complete package.
+
+At this time, I only feel comfortable with looking at reported bugs.
+
+Thank you for your understanding.
+
+=========================
+Future Contribution Goals
+=========================
+
 Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 

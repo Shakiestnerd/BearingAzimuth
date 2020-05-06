@@ -31,7 +31,7 @@ class TestAngle:
         b = angle.Bearing()
         b._azimuth = 90.75
         b.dec_to_dms()
-        assert(b.__str__() == f"S89{DEGREE}15'00\"E : 90.75{DEGREE}")
+        assert(b._degree == 89 and b._minute == 15 and b._second == 0)
 
     def test_bearing(self):
         """ Displays instance attributes all zeroes"""
@@ -56,3 +56,10 @@ class TestAngle:
         assert (b.__str__() == f"N90{DEGREE}00'00\"W : 270{DEGREE}")
         b.set_azimuth(280.5)
         assert (b.__str__() == f"N85{DEGREE}30'00\"W : 280.5{DEGREE}")
+
+    def test_submit_bearing(self):
+        b = angle.Bearing()
+        b.submit_bearing("N", "45", "0", "0", "W")
+        assert(b.get_bearing() == f"N45{DEGREE}00'00\"W")
+        assert(b.get_azimuth() == 315.0000)
+

@@ -13,7 +13,8 @@ So, the best choice was to build a little converter so that values could be copi
 to the clipboard and pasted into the CAD program.
 
 * Free software: MIT license
-* Documentation: https://bearing.readthedocs.io.
+* Documentation: https://bearingazimuth.readthedocs.io/en/latest/
+* Github Repository: https://github.com/Shakiestnerd/BearingAzimuth
 
 
 Features
@@ -24,6 +25,10 @@ Features
 * Copy the results to the clipboard
 * Draw a sample angle on screen.
 * User interface created with PySimpleGui
+
+.. image:: _static/main.gif
+        :align: center
+        :alt: Bearing Screen
 
 Credits
 -------

@@ -63,7 +63,7 @@ class Bearing:
         :arg az: azimuth value
         :return: The bearing as a string
         """
-        self._azimuth = float(az)
+        self._azimuth = round(float(az), ndigits=4)
         self.calc_bearing(az)
         return self.get_bearing()
 
