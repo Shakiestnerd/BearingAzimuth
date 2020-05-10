@@ -1,7 +1,7 @@
 import math
 from typing import Dict
 
-DEGREE = u'\N{DEGREE SIGN}'
+DEGREE = "\N{DEGREE SIGN}"
 
 
 class Bearing:
@@ -10,6 +10,7 @@ class Bearing:
     It does the conversion between the two and returns the information in
     several formats.
     """
+
     def __init__(self):
         """
         Initialize the private class variables.  They are not intended to be
@@ -19,23 +20,31 @@ class Bearing:
         self._minute: int = 0
         self._second: int = 0
         self._azimuth: float = 0
-        self._north: str = 'N'
-        self._east: str = 'E'
+        self._north: str = "N"
+        self._east: str = "E"
 
     def __str__(self) -> str:
         """
         Text output of both the bearing and azimuth
         """
-        result: str = f"{self._north}{int(self._degree):02d}{DEGREE}{int(self._minute):02d}'" \
-                      f"{int(self._second):02d}\"{self._east} : {self._azimuth}{DEGREE}"
+        result: str = (
+            f"{self._north}{int(self._degree):02d}{DEGREE}"
+            f"{int(self._minute):02d}'"
+            f'{int(self._second):02d}"{self._east}'
+            f" : {self._azimuth:.4f}{DEGREE}"
+        )
         return result
 
     def __repr__(self) -> str:
         """
         Repr output of both the bearing and azimuth
         """
-        result: str = f"{self._north}{int(self._degree):02d}{DEGREE}{int(self._minute):02d}'" \
-                      f"{int(self._second):02d}\"{self._east} : {self._azimuth}{DEGREE}"
+        result: str = (
+            f"{self._north}{int(self._degree):02d}{DEGREE}"
+            f"{int(self._minute):02d}'"
+            f'{int(self._second):02d}"{self._east}'
+            f" : {self._azimuth:.4f}{DEGREE}"
+        )
         return result
 
     def set_bearing(self, n: str, d: int, m: int, s: int, e: str) -> float:
@@ -105,7 +114,9 @@ class Bearing:
         :return: None
         """
         if self._azimuth < -360 or self._azimuth > 360:
-            raise ValueError(f"Azimuth angle must be between 0{DEGREE} and 360{DEGREE}.")
+            raise ValueError(
+                f"Azimuth angle must be between 0{DEGREE} and 360{DEGREE}."
+            )
 
         angle = self._azimuth
         # adjust angle based on quadrant
@@ -127,17 +138,24 @@ class Bearing:
         Return just the bearing as a formatted string.
         :return: bearing value
         """
-        result: str = f"{self._north}{int(self._degree):02d}{DEGREE}{int(self._minute):02d}'" \
-                      f"{int(self._second):02d}\"{self._east}"
+        result: str = (
+            f"{self._north}{int(self._degree):02d}{DEGREE}"
+            f"{int(self._minute):02d}'"
+            f'{int(self._second):02d}"{self._east}'
+        )
         return result
 
     def get_bearing_dict(self) -> Dict:
         """
         Return the components of a bearing in a dictionary.
         """
-        return {"northing": f"{self._north}", "degrees": f"{int(self._degree):02d}",
-                "minutes": f"{int(self._minute):02d}",
-                "seconds": f"{int(self._second):02d}", "easting": f"{self._east}"}
+        return {
+            "northing": f"{self._north}",
+            "degrees": f"{int(self._degree):02d}",
+            "minutes": f"{int(self._minute):02d}",
+            "seconds": f"{int(self._second):02d}",
+            "easting": f"{self._east}",
+        }
 
     def get_azimuth(self) -> float:
         """
@@ -159,18 +177,16 @@ class Bearing:
         :arg e: easting (always either 'E' or 'W')
         :return: the azimuth as a float or 0 on failure
         """
-        valid_input = False
         if len(n) == 1 and len(e) == 1:
             if n in ["N", "S"] and e in ["E", "W"]:
                 if 0 < len(d) < 3 and 0 < len(m) < 3 and 0 < len(s) < 3:
-                    valid_input = True
                     return self.set_bearing(n, int(d), int(m), int(s), e)
                 else:
                     return 0
 
     def submit_azimuth(self, az: str) -> Dict:
         """
-        Sets the azimuth value when the input is a string.  Does some validation
+        Sets the azimuth value when the input is a string. Does some validation
         and returns the bearing as a dictionary.
         :return: bearing as a dict
         """
@@ -188,4 +204,4 @@ if __name__ == "__main__":
     b = Bearing()
     b.set_azimuth(90.75)
     print(b)
-    assert (b.__str__() == f"S89{DEGREE}15'00\"E : 90.75{DEGREE}")
+    assert b.__str__() == f"S89{DEGREE}15'00\"E : 90.7500{DEGREE}"

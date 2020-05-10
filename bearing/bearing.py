@@ -1,6 +1,6 @@
 """Main module.  Runs the dialog."""
 import PySimpleGUI as sg
-from angle import Bearing
+from bearing.angle import Bearing
 import pyperclip
 import math
 import webbrowser
