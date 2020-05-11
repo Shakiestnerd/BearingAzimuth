@@ -1,4 +1,7 @@
-"""Main module.  Runs the dialog."""
+"""
+Bearing main module.  Runs the user interface to allow entering the bearing
+and azimuth values
+"""
 import PySimpleGUI as sg
 from bearing.angle import Bearing
 import pyperclip
@@ -12,6 +15,12 @@ NUMBER_MARKER_FREQUENCY = 25
 
 
 class UI:
+    """
+    The UI class defines the user interface dialog using PySimpleGUI.  It
+    allows entering the bearing and azimuth values and performs the conversions
+    as text is entered into the form fields.
+    """
+
     def __init__(self):
         """
         Run the user interface using PySimpleGUI
@@ -104,7 +113,7 @@ class UI:
     def draw_axis(self):
         """
         Draws the X and Y axis on the canvas for the graphical representation of
-        the angle.
+        the angle on the user interface form.
         """
         self.canvas.draw_line((-90, 0), (90, 0), color="blue")  # axis lines
         self.canvas.draw_line((0, -90), (0, 90), color="blue")

@@ -1,3 +1,6 @@
+""" This module includes the Bearing class which handles all the bearings and
+azimuth values and performs all the conversions.
+"""
 import math
 from typing import Dict
 
@@ -26,6 +29,9 @@ class Bearing:
     def __str__(self) -> str:
         """
         Text output of both the bearing and azimuth
+
+        :return: bearing and azimuth
+        :rtype: str
         """
         result: str = (
             f"{self._north}{int(self._degree):02d}{DEGREE}"
@@ -38,6 +44,9 @@ class Bearing:
     def __repr__(self) -> str:
         """
         Repr output of both the bearing and azimuth
+
+        :return: bearing and azimuth
+        :rtype: str
         """
         result: str = (
             f"{self._north}{int(self._degree):02d}{DEGREE}"
@@ -50,12 +59,19 @@ class Bearing:
     def set_bearing(self, n: str, d: int, m: int, s: int, e: str) -> float:
         """
         Initialize a bearing and perform the azimuth conversion
-        :arg n: northing (is always either 'N' or 'S')
-        :arg d: degrees
-        :arg m: minutes
-        :arg s: seconds
-        :arg e: easting (always either 'E' or 'W')
+
+        :param n: northing (is always either 'N' or 'S')
+        :type n: str
+        :param d: degrees
+        :type d: int
+        :param m: minutes
+        :type m: int
+        :param s: seconds
+        :type s: int
+        :param e: easting (always either 'E' or 'W')
+        :type e: str
         :return: the azimuth as a float
+        :rtype: float
 
         """
         self._north = str(n)
@@ -69,8 +85,11 @@ class Bearing:
     def set_azimuth(self, az: float) -> str:
         """
         Set the value of the azimuth and perform the bearing conversion.
-        :arg az: azimuth value
+
+        :param az: azimuth value
+        :type az: float
         :return: The bearing as a string
+        :rtype: str
         """
         self._azimuth = round(float(az), ndigits=4)
         self.calc_bearing(az)
@@ -79,6 +98,7 @@ class Bearing:
     def calc_azimuth(self) -> None:
         """
         Performs the azimuth conversion using the private members
+
         :return: None
         """
         angle = round(self._degree + self._minute / 60 + self._second / 3600, 4)
@@ -94,7 +114,8 @@ class Bearing:
     def calc_bearing(self, az: float) -> None:
         """
         Performs the bearing calculation.
-        :arg az: Azimuth as a float
+        :param az: Azimuth as a float
+
         :return: None
         """
         if az <= 90.0 or az >= 270.0:
@@ -111,6 +132,7 @@ class Bearing:
         """
         Adjust the angle based on north and sets the degrees, minutes, and
         seconds member variables.
+
         :return: None
         """
         if self._azimuth < -360 or self._azimuth > 360:
@@ -136,7 +158,9 @@ class Bearing:
     def get_bearing(self) -> str:
         """
         Return just the bearing as a formatted string.
+
         :return: bearing value
+        :rtype: str
         """
         result: str = (
             f"{self._north}{int(self._degree):02d}{DEGREE}"
@@ -148,6 +172,9 @@ class Bearing:
     def get_bearing_dict(self) -> Dict:
         """
         Return the components of a bearing in a dictionary.
+
+        :return: bearing
+        :rtype: Dict
         """
         return {
             "northing": f"{self._north}",
@@ -160,8 +187,10 @@ class Bearing:
     def get_azimuth(self) -> float:
         """
         Since accessing the member variables directly is discouraged, this
-        method returns the azimuth value
-        :return: azimuth as a float
+        method returns the azimuth value.
+
+        :return: azimuth value
+        :rtype: float
         """
         return self._azimuth
 
@@ -170,12 +199,19 @@ class Bearing:
         Initialize a bearing using string values for input.  submit_bearing
         does some extra validation and converts degrees minutes, and seconds
         to integers.
-        :arg n: northing (is always either 'N' or 'S')
-        :arg d: degrees
-        :arg m: minutes
-        :arg s: seconds
-        :arg e: easting (always either 'E' or 'W')
+
+        :param n: northing (is always either 'N' or 'S')
+        :type n: str
+        :param d: degrees
+        :type d: str
+        :param m: minutes
+        :type m: str
+        :param s: seconds
+        :type s: str
+        :param e: easting (always either 'E' or 'W')
+        :type e: str
         :return: the azimuth as a float or 0 on failure
+        :rtype: float
         """
         if len(n) == 1 and len(e) == 1:
             if n in ["N", "S"] and e in ["E", "W"]:
@@ -188,7 +224,12 @@ class Bearing:
         """
         Sets the azimuth value when the input is a string. Does some validation
         and returns the bearing as a dictionary.
-        :return: bearing as a dict
+
+        :param az: azimuth value
+        :type az: str
+
+        :return: bearing components
+        :rtype: Dict
         """
         try:
             value = float(az)
